@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driverclassname: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  jpa:
+    show-sql: false
+    hibernate.ddl-auto: none
+logging:
+  path: /var/log/${artifactId}
+  file: /var/log/${artifactId}/prod.log
+  level:
+    org.hibernate: INFO

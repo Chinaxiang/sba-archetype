@@ -1,0 +1,41 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <property name="LOG_FILE"
+              value="${symbol_dollar}{LOG_FILE:-${symbol_dollar}{LOG_PATH:-${symbol_dollar}{LOG_TEMP:-${symbol_dollar}{java.io.tmpdir:-/tmp}}}/spring.log}"/>
+    <include
+            resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${symbol_dollar}{FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <file>${symbol_dollar}{LOG_FILE}</file>
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${symbol_dollar}{LOG_FILE}.%d{yyyy-MM-dd}.%i</fileNamePattern>
+            <maxFileSize>${symbol_dollar}{LOG_FILE_MAX_SIZE:-256MB}</maxFileSize>
+            <maxHistory>${symbol_dollar}{LOG_FILE_MAX_HISTORY:-10}</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <springProfile name="dev,test">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+    <springProfile name="prod">
+        <root level="INFO">
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+</configuration>

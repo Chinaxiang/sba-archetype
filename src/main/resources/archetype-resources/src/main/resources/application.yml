@@ -1,0 +1,20 @@
+server:
+  servlet:
+    context-path: /example
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: "@build.finalName@"
+  profiles:
+    active: "@profileActive@"
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  http:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
