@@ -78,7 +78,7 @@ package.bat dev
 > linux/mac
 
 ```bash
-sh package.sh dev
+bash package.sh dev
 ```
 
 打包的压缩包,target目录下
@@ -123,9 +123,9 @@ bin/startup.bat
 ${symbol_pound}${symbol_pound}${symbol_pound} linux启动，停止，重启
 
 ```bash
-sh bin/startup.sh  [dev|prod|test] 启动项目
-sh bin/shutdown.sh  停止服务
-sh bin/restart.sh   重启服务
+bash bin/startup.sh  [dev|prod|test] 启动项目
+bash bin/shutdown.sh  停止服务
+bash bin/restart.sh  [dev|prod|test]  重启服务
 ```
 
 ${symbol_pound}${symbol_pound}${symbol_pound} 项目访问

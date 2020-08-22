@@ -23,13 +23,14 @@
         </rollingPolicy>
     </appender>
 
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-    </root>
-
-    <springProfile name="dev,test">
+    <springProfile name="dev">
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+    <springProfile name="test">
+        <root level="INFO">
             <appender-ref ref="FILE"/>
         </root>
     </springProfile>

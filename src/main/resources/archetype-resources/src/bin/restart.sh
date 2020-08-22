@@ -15,10 +15,16 @@ APPLICATION="@project.name@"
 # 项目启动jar包名称
 APPLICATION_JAR="@build.finalName@.jar"
 
+# 项目启动环境
+PROFILE="@profileActive@"
+if [[ -n "$1" ]]
+then
+    PROFILE=$1
+fi
 # 停服
 echo stop ${APPLICATION} Application...
-sh shutdown.sh
+bash shutdown.sh
 
 # 启动服务
 echo start ${APPLICATION} Application...
-sh startup.sh
+bash startup.sh ${PROFILE}
